@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+
+  tasks: 
+  - name: install or uninstall multiple package by using for loop
+    yum: 
+      name: "{{ item.pkg }}"
+      state: "{{ item.setup }}"
+    loop:
+      - {pkg: 'git', setup: 'present'}
+      - {pkg: 'httpd', setup: 'absent'}
+      - {pkg: 'tree', setup: 'absent'}
+

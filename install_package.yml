@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+  - name: creating user
+    user:
+      name: Mounika
+
+  - name: install package java
+    yum:
+      name: java-1.8*
+      state: absent
+
